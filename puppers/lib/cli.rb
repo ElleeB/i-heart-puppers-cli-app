@@ -21,7 +21,7 @@ class Puppers::CLI
     # check if valid
     if valid_zip?(zip)
       #run the zip and list shelters
-      Puppers::Shelter.all
+     puts Puppers::Shelter.all
     else
       puts "Please enter a valid zip code."
       display_shelters # instead of this create a loop (zip == nil)
