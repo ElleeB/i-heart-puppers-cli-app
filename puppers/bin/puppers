@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+## CLI Code ##
+
+require './lib/puppers'
+
+Puppers::CLI.new.call
