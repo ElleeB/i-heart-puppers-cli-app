@@ -17,29 +17,41 @@ class Puppers::CLI
   def display_shelters
     zip = gets.strip
 
+    #to exit...enter 'exit'
     puts "Shelters near you:"
+
     # check if valid
     if valid_zip?(zip)
       #run the zip and list shelters
-     @shelters = Puppers::Shelter.all
-     puts Puppers::Shelter.all
+      @shelters = Puppers::Shelter.all
+      @shelters.each.with_index(1) do |shelter, i|
+        puts "#{i}. #{shelter.name}, #{shelter.address}, #{shelter.distance}"
+      end
     else
       puts "Please enter a valid zip code."
-      display_shelters # instead of this create a loop (zip == nil)
+      # display_shelters again # instead of this create a loop (zip == nil)?
     end
   end
 
   def display_shelter_details
-    # asks which shelter user is interested
-    puts "Enter a number for more details about your shelter, or enter 'search' to go back to search."
+    # asks in which shelter user is interested
+    puts "Enter a number for more details about your shelter, or enter 'search' to go back to enter another zip code."
     # gets input
     input = gets.strip
-
     # display specific shelter details
     # check if valid - valid_shelter_selection(input)
     # if valid_shelter_selection?(input), then...
     if input == "1" || input == "2" || input == "3"
-      puts @shelters[input.to_i - 1]
+      shelter = @shelters[input.to_i - 1]
+      puts "*******************"
+      puts ""
+      puts "#{shelter.name}"
+      puts "#{shelter.address}"
+      puts "#{shelter.phone}"
+      puts "#{shelter.url}"
+      puts "#{shelter.distance}"
+      puts ""
+      puts "*******************"
     elsif input == "search"
       self.call
     else
