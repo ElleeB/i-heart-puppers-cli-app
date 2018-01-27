@@ -21,6 +21,7 @@ class Puppers::CLI
     # check if valid
     if valid_zip?(zip)
       #run the zip and list shelters
+     @shelters = Puppers::Shelter.all
      puts Puppers::Shelter.all
     else
       puts "Please enter a valid zip code."
@@ -37,27 +38,21 @@ class Puppers::CLI
     # display specific shelter details
     # check if valid - valid_shelter_selection(input)
     # if valid_shelter_selection?(input), then...
-    if input == "1"
-      puts "Puppies R Us"
-      puts "555 5th Avenue"
-      puts "Ourtown, USA 48070"
-    elsif input == "2"
-      puts "Kitties are The Best"
-      puts "433 Kittylitter Blvd"
-      puts "Sillypaws, USA 48070"
-    elsif input == "3"
-      puts "I Want A Ferret"
-      puts "29067 Fluffy Lane"
-      puts "Sillyface, USA 48070"
+    if input == "1" || input == "2" || input == "3"
+      puts @shelters[input.to_i - 1]
     elsif input == "search"
       self.call
+    else
+      puts "Please enter the number of your shelter, or 'search' to go back to the zip code entry."
     end
 
     # give option to go back to the list OR exit
-    puts "To return to the Shelter List, please enter 'back', or 'exit' to quit"
+    puts "To return to the Shelter List, please enter 'back'. To go back to the zib code entry, please enter 'search, or 'exit' to quit"
     input = gets.strip
     if input == "back"
       self.display_shelters #zip variable? ## this does not work, obviously
+    elsif input == "search"
+      self.call
     elsif input == "exit"
       goodbye
     end
