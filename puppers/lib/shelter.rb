@@ -4,9 +4,9 @@ class Puppers::Shelter
 
   @shelters = []
 
-  # def initialize#(scraped_data)
+  # def initialize#(scraped_data)??
   #   # use scrape return to get info and create shelters
-  #   #@@shelters << self
+  #   #@shelters << self
   # end
 
   # def self.create_from_collection
@@ -15,10 +15,7 @@ class Puppers::Shelter
 
   def self.all
     #should return a collection of all instances of Shelter
-    # @@shelters
-    # puts "1. Puppies R Us"
-    # puts "2. Kitties are The Best"
-    # puts "3. I Want A Ferret"
+    # @shelters
 
     shelter_1 = self.new
     shelter_1.name = "Puppies R Us"

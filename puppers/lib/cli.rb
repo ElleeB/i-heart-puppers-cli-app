@@ -3,9 +3,9 @@
 class Puppers::CLI
 
   def call
-    puts "*************"
+    puts "***************"
     puts "We Heart Rescue".upcase
-    puts "*************"
+    puts "***************"
     puts ""
     puts "To find shelters with pets for adoption near you, please enter your zip code."
     puts ""
@@ -18,6 +18,7 @@ class Puppers::CLI
     zip = gets.strip
 
     #to exit...enter 'exit'
+    puts ""
     puts "Shelters near you:"
 
     # check if valid
@@ -35,6 +36,7 @@ class Puppers::CLI
 
   def display_shelter_details
     # asks in which shelter user is interested
+    puts ""
     puts "Enter a number for more details about your shelter, or enter 'search' to go back to enter another zip code."
     # gets input
     input = gets.strip
@@ -43,6 +45,7 @@ class Puppers::CLI
     # if valid_shelter_selection?(input), then...
     if input == "1" || input == "2" || input == "3"
       shelter = @shelters[input.to_i - 1]
+      puts ""
       puts "*******************"
       puts ""
       puts "#{shelter.name}"
@@ -52,14 +55,15 @@ class Puppers::CLI
       puts "#{shelter.distance}"
       puts ""
       puts "*******************"
+      puts ""
     elsif input == "search"
       self.call
     else
       puts "Please enter the number of your shelter, or 'search' to go back to the zip code entry."
     end
 
-    # give option to go back to the list OR exit
-    puts "To return to the Shelter List, please enter 'back'. To go back to the zib code entry, please enter 'search, or 'exit' to quit"
+    # give option to go back to the list OR exit ### improve input options big time
+    puts "To return to the Shelter List, please enter 'back'. To go back to the zip code entry, please enter 'search, or 'exit' to quit"
     input = gets.strip
     if input == "back"
       self.display_shelters #zip variable? ## this does not work, obviously
