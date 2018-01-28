@@ -5,14 +5,24 @@ class Scraper
   def self.scrape_pet_index
     #this requires the use of the zip code
     doc = Nokogiri::HTML(open("https://www.petfinder.com/animal-shelters-and-rescues/search/"))
-    puts doc.css(".search-results-container")[0].text
-
+    puts doc.css("pfdc-shelter-search.shelter-search" "div.shelterSearch.u-vr2x")
   end
 
 end
 
+# puts doc.css("div#shelter-search-form-distance.module").text
+# =>
+# Search For Animal Welfare Groups by Distance:
+#
+# Location: Ex: Atlanta, GA or 30303
+#
+# Group Name
+#
+# Search by state
 
-# puts doc.css(".search-results-container")[0].text
+#--------------------
+
+# puts doc.css(".search-results-container").text
 # =>
 
 # Search For Animal Welfare Groups by Distance:
